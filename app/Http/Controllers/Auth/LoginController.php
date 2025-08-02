@@ -25,7 +25,6 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-        dd($request->only('email','password'));
         if (Auth::attempt($request->only('email', 'password'))) {
             $request->session()->regenerate();
             return redirect()->intended('/dashboard')->with('success', 'You are logged in!');
