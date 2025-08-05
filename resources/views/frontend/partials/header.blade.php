@@ -39,18 +39,27 @@
 
           <ul class="d-flex justify-content-end list-unstyled m-0">
             <li>
-              <a href="{{route('login')}}" class="rounded-circle bg-light p-2 mx-1">
-                <svg width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#user"></use></svg>
-              </a>
+              @auth
+                <a href="{{ route('dashboard') }}" class="rounded-circle bg-light p-2 mx-1" title="Dashboard">
+                  <svg width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#user"></use></svg>
+                </a>
+              @else
+                <a href="{{ route('login') }}" class="rounded-circle bg-light p-2 mx-1" title="Login">
+                  <svg width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#user"></use></svg>
+                </a>
+              @endauth
             </li>
             <li>
-              <a href="#" class="rounded-circle bg-light p-2 mx-1">
+              <a href="#" class="rounded-circle bg-light p-2 mx-1" title="Wishlist">
                 <svg width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#heart"></use></svg>
               </a>
             </li>
             <li class="d-lg-none">
-              <a href="#" class="rounded-circle bg-light p-2 mx-1" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
+              <a href="#" class="rounded-circle bg-light p-2 mx-1 position-relative" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
                 <svg width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#cart"></use></svg>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-badge">
+                  0
+                </span>
               </a>
             </li>
             <li class="d-lg-none">
@@ -61,9 +70,12 @@
           </ul>
 
           <div class="cart text-end d-none d-lg-block dropdown">
-            <button class="border-0 bg-transparent d-flex flex-column gap-2 lh-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
+            <button class="border-0 bg-transparent d-flex flex-column gap-2 lh-1 position-relative" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
               <span class="fs-6 text-muted dropdown-toggle">Your Cart</span>
-              <span class="cart-total fs-5 fw-bold">$1290.00</span>
+              <span class="cart-total fs-5 fw-bold">$0.00</span>
+              <span class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-danger cart-badge">
+                0
+              </span>
             </button>
           </div>
         </div>
